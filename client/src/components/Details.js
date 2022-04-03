@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-// import { htmlToText } from 'html-to-text';
 import Helmet from 'react-helmet';
 import { postDetails, postComment } from '../store/asyncMethods/PostMethods';
 import Loader from './Loader';
@@ -45,7 +44,7 @@ const Details = () => {
 							<div className='post__body'>
 								<h1 className='post__body__title'>{details.title}</h1>
 								<div className='post__body__details'>
-									{details.body}
+									{details.body.replace(/<[^>]+>/g, '')}
 								</div>
 								<div className='post__body__image'>
 									<img src={`/images/${details.image}`} alt={details.image} />
